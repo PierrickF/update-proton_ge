@@ -14,9 +14,11 @@ Make sure to read the documentation given for Proton-GE.
 1. Set your current working directory to a place you deem approriate for downloads:
 
 `cd ~/downloads/`
+
 2. Clone this repository:
 
 `git clone https://github.com/PierrickF/update-proton_ge.git`
+
 3. Set your current working directory to the newly created directory:
 
 `cd update-proton_ge`
@@ -28,9 +30,11 @@ Make sure to read the documentation given for Proton-GE.
 3. Set your current working directory to your default downloads directory:
 
 `cd ~/downloads/`
+
 4. Unzip the file:
 
 `unzip update-proton_ge-main.zip`
+
 5. Set your current working directory to the newly created directory:
 
 `cd update-proton_ge-main`
@@ -40,9 +44,11 @@ Make sure to read the documentation given for Proton-GE.
 1. List the directories found in your `PATH` environment variable:
 
 `echo $PATH`
+
 2. Choose one of those directories and copy the program file to it:
 
 `cp update-proton_ge <directory_in_your_path>`
+
 3. Give the `update_proton-ge` file appropriate permissions:
 
 `chmod +x <directory_in_your_path>/update-proton_ge`
