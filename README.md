@@ -62,6 +62,18 @@ cp update-proton_ge <directory_in_your_path>
 chmod +x <directory_in_your_path>/update-proton_ge
 ```
 
+## 3. Clean your downloads directory
+
+1. Set your current working directory to your default downloads directory:
+```
+cd ~/downloads/
+```
+
+2. Remove any file or directory beginning by `update_proton-ge` and its contents:
+```
+rm -rf update_proton-ge*
+```
+
 ---
 
 # Usage
@@ -71,5 +83,5 @@ You can now run the program from anywhere in the terminal:
 update-proton_ge
 ```
 
-You can also refer it by its name `update-proton_ge` in other scripts, or
+You can also refer to it by its name `update-proton_ge` in other scripts, or
 in scheduled timers or events, for instance.
