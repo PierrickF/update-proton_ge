@@ -1,7 +1,8 @@
-This program compares the latest release of Proton-GE to the most recent
-version installed on your system, and will update it if a newer version exists.
+This program compares the latest release of Proton-GE to the most recent version installed on your system,
+and will update it if a newer version exists.
 
-It is a reworked and improved version of the script given on the [Proton-GE repository](https://github.com/GloriousEggroll/proton-ge-custom).
+It is a modified version of the script given on the [Proton-GE repository](https://github.com/GloriousEggroll/proton-ge-custom),
+to make it easier to use on a regular basis.
 
 Make sure to read the documentation given for Proton-GE.
 
