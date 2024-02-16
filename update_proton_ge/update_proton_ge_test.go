@@ -2,6 +2,7 @@ package update_proton_ge_test
 
 import (
 	"main/update_proton_ge"
+	"os/exec"
 	"testing"
 )
 
@@ -48,5 +49,18 @@ func TestCompareVersions(t *testing.T) {
 			testLocal,
 			want,
 			got)
+	}
+}
+
+func TestMakeTempDir(t *testing.T) {
+	t.Parallel()
+
+	rm := exec.Command("rm", "-rf", "/tmp/proton-ge-custom/")
+	_ = rm.Run()
+
+	err := update_proton_ge.MakeTempDir()
+
+	if err != nil {
+		t.Errorf("Failed to run mkdir : %s", err)
 	}
 }

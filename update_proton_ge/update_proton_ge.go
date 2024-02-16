@@ -59,3 +59,9 @@ func GetLocal() (string, error) {
 func CompareVersions(latest, local string) bool {
 	return latest == local
 }
+
+// MakeTempDir creates a temporary directory which will be used to download data.
+func MakeTempDir() error {
+	mkdir := exec.Command("mkdir", "/tmp/proton-ge-custom")
+	return mkdir.Run()
+}
