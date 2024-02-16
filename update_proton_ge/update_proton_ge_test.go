@@ -19,6 +19,20 @@ func TestGetLatest(t *testing.T) {
 	}
 }
 
+func TestGetLocal(t *testing.T) {
+	t.Parallel()
+
+	got, err := update_proton_ge.GetLocal()
+
+	if err != nil {
+		t.Errorf("Failed to run shell commands: %s", err)
+	}
+
+	if got == "" {
+		t.Error("Want a version name, got an empty string")
+	}
+}
+
 func TestCompareVersions(t *testing.T) {
 	t.Parallel()
 

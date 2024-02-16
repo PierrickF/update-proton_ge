@@ -31,6 +31,29 @@ func GetLatest() (string, error) {
 	return string(latest), err
 }
 
+// GetLocal runs shell commands to find a file name.
+// The output of the shell commands is captured in a slice of bytes,
+// which is then converted to a string.
+func GetLocal() (string, error) {
+	//TODO: make the test pass with the relative path ~
+	ls := exec.Command("ls", "/home/pierrick/.steam/root/compatibilitytools.d/")
+	sort := exec.Command("sort", "-r")
+	head := exec.Command("head", "-1")
+
+	sort.Stdin, _ = ls.StdoutPipe()
+	head.Stdin, _ = sort.StdoutPipe()
+
+	_ = ls.Start()
+	_ = sort.Start()
+
+	local, err := head.Output()
+
+	_ = ls.Wait()
+	_ = sort.Wait()
+
+	return string(local), err
+}
+
 // CompareVersions takes in two strings and compare them.
 // If they are equal, the software is up to date.
 func CompareVersions(latest, local string) bool {
