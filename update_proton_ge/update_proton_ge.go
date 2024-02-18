@@ -31,7 +31,7 @@ func GetLatest() (string, error) {
 
 	curlOutput, err := curl.Output()
 	if err != nil {
-		return "", fmt.Errorf("Curl error: %w", err)
+		return "", fmt.Errorf("curl error: %w", err)
 	}
 
 	return ParseGithubData(curlOutput)
