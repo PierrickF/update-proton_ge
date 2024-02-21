@@ -5,7 +5,10 @@ import (
 	"os/exec"
 )
 
-func GetLatest() (string, error) {
+// GetLatestVersionName downloads a JSON file corresponding to the latest
+// release of Proton GE, and feeds it to ParseGithubData.
+// It returns the latest version name of Proton GE.
+func GetLatestVersionName() (name string, err error) {
 
 	curlUrl := "https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases/latest"
 	curl := exec.Command("curl", "-s", curlUrl)
