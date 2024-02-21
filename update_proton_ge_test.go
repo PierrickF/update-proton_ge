@@ -1,16 +1,16 @@
 package update_proton_ge_test
 
 import (
-	"main/update_proton_ge"
 	"os"
 	"os/exec"
 	"testing"
+	"update_proton_ge"
 )
 
 func TestParseGithubDataReturnsCorrectVersionName(t *testing.T) {
 	t.Parallel()
 
-	data, err := os.ReadFile("../testdata/gh-data.json")
+	data, err := os.ReadFile("testdata/gh-data.json")
 
 	if err != nil {
 		t.Fatal(err)
