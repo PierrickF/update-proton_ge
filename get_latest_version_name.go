@@ -19,5 +19,4 @@ func GetLatestVersionName() (name string, err error) {
 	}
 
 	return ParseGithubData(curlOutput)
-
 }

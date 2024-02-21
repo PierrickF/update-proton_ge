@@ -25,5 +25,4 @@ func TestParseGithubDataReturnsCorrectVersionName(t *testing.T) {
 	if want != got {
 		t.Errorf("Want %q, got %q", want, got)
 	}
-
 }
