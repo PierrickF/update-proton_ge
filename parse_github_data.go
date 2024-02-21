@@ -4,11 +4,14 @@ import (
 	"encoding/json"
 )
 
-func ParseGithubData(data []byte) (string, error) {
+// ParseGithubData takes in a JSON file downloaded from GitHub,
+// and parses it to retreive the release name of Proton GE,
+// which is then returned.
+func ParseGithubData(data []byte) (name string, err error) {
 	var release struct {
 		ReleaseTag string `json:"tag_name"`
 	}
-	err := json.Unmarshal(data, &release)
+	err = json.Unmarshal(data, &release)
 	if err != nil {
 		return "", err
 	}
