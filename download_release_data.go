@@ -1,22 +1,26 @@
 package update_proton_ge
 
 import (
-	"fmt"
-	"os/exec"
+	"net/http"
+	"net/http/httputil"
 )
 
-// GetLatestVersionName downloads a JSON file corresponding to the latest
-// release of Proton GE, and feeds it to ParseGithubData.
-// It returns the latest version name of Proton GE.
-func GetLatestVersionName() (name string, err error) {
+// DownloadReleaseData makes an http GET request, and dumps the contents of the
+// response as a []byte.
+// It returns JSON data that contains information about the latest Proton GE
+// release.
+func DownloadReleaseData() (data []byte, err error) {
 
-	curlUrl := "https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases/latest"
-	curl := exec.Command("curl", "-s", curlUrl)
-
-	curlOutput, err := curl.Output()
+	resp, err := http.Get("https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases/latest")
 	if err != nil {
-		return "", fmt.Errorf("curl error: %w", err)
+		return []byte{}, err
+	}
+	defer resp.Body.Close()
+
+	data, err = httputil.DumpResponse(resp, true)
+	if err != nil {
+		return []byte{}, err
 	}
 
-	return ParseGithubData(curlOutput)
+	return data, nil
 }
