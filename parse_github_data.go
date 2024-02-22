@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 )
 
-// ParseGithubData takes in a JSON file downloaded from GitHub,
+// ParseGithubData takes in JSON data downloaded from GitHub,
 // and parses it to retreive the release name of Proton GE,
 // which is then returned.
 func ParseGithubData(data []byte) (name string, err error) {
