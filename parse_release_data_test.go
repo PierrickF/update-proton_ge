@@ -6,7 +6,7 @@ import (
 	"update_proton_ge"
 )
 
-func TestParseGithubDataReturnsCorrectVersionName(t *testing.T) {
+func TestParseReleaseDataReturnsCorrectVersionName(t *testing.T) {
 	t.Parallel()
 
 	data, err := os.ReadFile("testdata/gh-data.json")
@@ -16,7 +16,7 @@ func TestParseGithubDataReturnsCorrectVersionName(t *testing.T) {
 	}
 
 	want := "GE-Proton8-32"
-	got, err := update_proton_ge.ParseGithubData(data)
+	got, err := update_proton_ge.ParseReleaseData(data)
 
 	if err != nil {
 		t.Fatal(err)

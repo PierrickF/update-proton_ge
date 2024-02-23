@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 )
 
-// ParseGithubData takes in JSON data downloaded from GitHub,
+// ParseReleaseData takes in JSON data downloaded from GitHub,
 // and parses it to retreive the release name of Proton GE,
 // which is then returned.
-func ParseGithubData(data []byte) (name string, err error) {
+func ParseReleaseData(data []byte) (name string, err error) {
 	var release struct {
 		ReleaseTag string `json:"tag_name"`
 	}
