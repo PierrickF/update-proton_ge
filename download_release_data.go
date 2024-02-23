@@ -1,14 +1,12 @@
 package update_proton_ge
 
 import (
+	"io"
 	"net/http"
-	"net/http/httputil"
 )
 
-// DownloadReleaseData makes an http GET request, and dumps the contents of the
-// response as a []byte.
-// It returns JSON data that contains information about the latest Proton GE
-// release.
+// DownloadReleaseData makes an http GET request, and returns JSON data as []byte
+// that contains information about the latest Proton GE release.
 func DownloadReleaseData() (data []byte, err error) {
 
 	resp, err := http.Get("https://api.github.com/repos/GloriousEggroll/proton-ge-custom/releases/latest")
@@ -17,7 +15,7 @@ func DownloadReleaseData() (data []byte, err error) {
 	}
 	defer resp.Body.Close()
 
-	data, err = httputil.DumpResponse(resp, true)
+	data, err = io.ReadAll(resp.Body)
 	if err != nil {
 		return []byte{}, err
 	}
