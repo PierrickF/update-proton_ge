@@ -9,7 +9,7 @@ import (
 func TestParseReleaseDataReturnsCorrectVersionName(t *testing.T) {
 	t.Parallel()
 
-	data, err := os.ReadFile("testdata/gh-data.json")
+	data, err := os.ReadFile("testdata/release-data.json")
 
 	if err != nil {
 		t.Fatal(err)
