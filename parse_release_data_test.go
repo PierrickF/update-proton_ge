@@ -21,7 +21,7 @@ func TestParseReleaseDataReturnsCorrectVersionName(t *testing.T) {
 	}
 
 	testCases := []testCase{
-		{target: "name",
+		{target: "releaseTag",
 			want: "GE-Proton8-32"},
 		{target: "tarballUrl",
 			want: "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton8-32/GE-Proton8-32.tar.gz"},
