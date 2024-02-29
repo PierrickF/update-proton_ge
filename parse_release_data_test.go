@@ -24,7 +24,7 @@ func TestParseReleaseDataReturnsCorrectVersionName(t *testing.T) {
 		{target: "releaseTag",
 			want: "GE-Proton8-32"},
 		{target: "tarballUrl",
-			want: "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton8-32/GE-Proton8-32.tar.gz"},
+			want: "https://api.github.com/repos/GloriousEggroll/proton-ge-custom/tarball/GE-Proton8-32"},
 		{target: "checksumUrl",
 			want: "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton8-32/GE-Proton8-32.sha512sum"},
 	}
