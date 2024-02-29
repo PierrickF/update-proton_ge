@@ -6,7 +6,7 @@ import (
 	"update_proton_ge"
 )
 
-func TestParseReleaseDataReturnsCorrectVersionName(t *testing.T) {
+func TestParseReleaseDataReturnsCorrectTarget(t *testing.T) {
 	t.Parallel()
 
 	data, err := os.ReadFile("testdata/release-data.json")
