@@ -15,14 +15,29 @@ func TestParseReleaseDataReturnsCorrectVersionName(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	want := "GE-Proton8-32"
-	got, err := update_proton_ge.ParseReleaseData(data)
-
-	if err != nil {
-		t.Fatal(err)
+	type testCase struct {
+		target string
+		want   string
 	}
 
-	if want != got {
-		t.Errorf("Want %q, got %q", want, got)
+	testCases := []testCase{
+		{target: "name",
+			want: "GE-Proton8-32"},
+		{target: "tarballUrl",
+			want: "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton8-32/GE-Proton8-32.tar.gz"},
+		{target: "checksumUrl",
+			want: "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton8-32/GE-Proton8-32.sha512sum"},
+	}
+
+	for _, tc := range testCases {
+		got, err := update_proton_ge.ParseReleaseData(data, tc.target)
+
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		if tc.want != got {
+			t.Errorf("Want %q, got %q", tc.want, got)
+		}
 	}
 }
