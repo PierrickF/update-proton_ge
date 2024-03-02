@@ -9,7 +9,7 @@ func main() {
 	installDir := "~/.steam/root/compatibilitytools.d/"
 
 	releaseData, _ := update_proton_ge.DownloadReleaseData()
-	latestRelease, _ := update_proton_ge.ParseReleaseData(releaseData)
+	latestRelease, _ := update_proton_ge.ParseReleaseData(releaseData, "releaseTag")
 	latestInstall, _ := update_proton_ge.FindLatestInstall(installDir)
 	println("Latest release: %q", latestRelease)
 	println("Latest install: %q", latestInstall)
