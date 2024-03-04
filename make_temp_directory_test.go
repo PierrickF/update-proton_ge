@@ -9,9 +9,7 @@ import (
 func TestMakeTempDirectoryCreatesCorrectDirectory(t *testing.T) {
 	t.Parallel()
 
-	err := update_proton_ge.MakeTempDirectory()
-
-	if err != nil {
+	if err := update_proton_ge.MakeTempDirectory(); err != nil {
 		t.Fatal(err)
 	}
 

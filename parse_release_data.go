@@ -24,9 +24,7 @@ func ParseReleaseData(data []byte, targetType string) (target string, err error)
 		Assets     []asset `json:"assets"`
 	}
 
-	err = json.Unmarshal(data, &release)
-
-	if err != nil {
+	if err = json.Unmarshal(data, &release); err != nil {
 		return "", err
 	}
 
