@@ -24,7 +24,7 @@ func TestDownloadTarballDownloadsCorrectRelease(t *testing.T) {
 	}
 
 	// cleanup to avoid false positive next time the test runs
-	if err := os.Remove("/tmp/update-proton-ge/GE-Proton8-32.tar.gz"); err != nil {
+	if err := os.RemoveAll("/tmp/update-proton-ge/"); err != nil {
 		t.Fatal(err)
 	}
 }
