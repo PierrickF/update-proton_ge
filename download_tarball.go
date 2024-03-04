@@ -6,8 +6,9 @@ import (
 	"os"
 )
 
-// DownloadReleaseData makes an http GET request, and returns JSON data as []byte
-// that contains information about the latest Proton GE release.
+// DownloadTarball creates a file and populates it with the contents of an
+// HTTP request.
+// The result is an archive file of the latest Proton GE release.
 func DownloadTarball(latestRelease string, tarballUrl string) error {
 
 	file, err := os.Create("/tmp/update-proton-ge/" + latestRelease + ".tar.gz")
