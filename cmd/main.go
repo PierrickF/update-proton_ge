@@ -19,7 +19,8 @@ func main() {
 	}
 	println("New release available, installing...")
 	update_proton_ge.MakeTempDirectory()
-	update_proton_ge.DownloadTarBall()
+	tarballUrl, _ := update_proton_ge.ParseReleaseData(releaseData, "tarballUrl")
+	update_proton_ge.DownloadTarball(latestRelease, tarballUrl)
 	update_proton_ge.DownloadChecksum()
 	update_proton_ge.CheckTarball()
 	update_proton_ge.MakeSteamDirectory()
