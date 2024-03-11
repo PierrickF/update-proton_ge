@@ -14,7 +14,9 @@ func CheckTarball(tarballFilePath string, checksumFilePath string) (isCorrect bo
 	}
 
 	// create local checksum
-	newChecksum := sha512.Sum512(tarball)
+	checksumArray := sha512.Sum512(tarball)
+	// convert array to slice
+	newChecksum := checksumArray[:]
 
 	// compare the two checksums
 	givenChecksum, err := os.ReadFile(checksumFilePath)
@@ -22,7 +24,5 @@ func CheckTarball(tarballFilePath string, checksumFilePath string) (isCorrect bo
 		return false, err
 	}
 
-	bytes.Equal(newChecksum, givenChecksum)
-
-	return true, nil
+	return bytes.Equal(newChecksum, givenChecksum), nil
 }
