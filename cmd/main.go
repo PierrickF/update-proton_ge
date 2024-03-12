@@ -7,6 +7,7 @@ import (
 
 func main() {
 	installDir := "~/.steam/root/compatibilitytools.d/"
+	tmpDir := "/tmp/update-proton-eg/"
 
 	releaseData, _ := update_proton_ge.DownloadReleaseData()
 	latestRelease, _ := update_proton_ge.ParseReleaseData(releaseData, "releaseTag")
@@ -23,7 +24,7 @@ func main() {
 	update_proton_ge.DownloadTarball(latestRelease, tarballUrl)
 	checksumUrl, _ := update_proton_ge.ParseReleaseData(releaseData, "checksumUrl")
 	update_proton_ge.DownloadChecksum(latestRelease, checksumUrl)
-	update_proton_ge.CheckTarball()
+	update_proton_ge.CheckTarball(tmpDir+latestRelease+".tar.gz", tmpDir+latestRelease+".sha512sum")
 	update_proton_ge.MakeSteamDirectory()
 	update_proton_ge.ExtractTarball()
 	update_proton_ge.RemoveTempDirectory()

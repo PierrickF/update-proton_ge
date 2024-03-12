@@ -3,14 +3,15 @@ package update_proton_ge
 import (
 	"bytes"
 	"crypto/sha512"
+	"errors"
 	"os"
 )
 
-func CheckTarball(tarballFilePath string, checksumFilePath string) (isCorrect bool, err error) {
+func CheckTarball(tarballFilePath string, checksumFilePath string) (err error) {
 	// open tarball file
 	tarball, err := os.ReadFile(tarballFilePath)
 	if err != nil {
-		return false, err
+		return err
 	}
 
 	// create local checksum
@@ -21,8 +22,11 @@ func CheckTarball(tarballFilePath string, checksumFilePath string) (isCorrect bo
 	// compare the two checksums
 	givenChecksum, err := os.ReadFile(checksumFilePath)
 	if err != nil {
-		return false, err
+		return err
 	}
 
-	return bytes.Equal(newChecksum, givenChecksum), nil
+	if !bytes.Equal(newChecksum, givenChecksum) {
+		return errors.New("checksum does not match")
+	}
+	return nil
 }
